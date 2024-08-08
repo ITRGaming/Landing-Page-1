@@ -2,15 +2,81 @@
   position: relative;
 }
 
-.img-fluid{
-  position: fixed;
-  top: 0;
-  z-index: -1;
-}
-
 .detailImg{
   max-height: 100%;
   overflow: hidden;
 }
 
+.impGradeint{
+  background-color: #28156F;
+  
+  /* Create the gradient. */
+  background-image: linear-gradient(45deg, #28156F, #755bd4);
+  
+  /* Set the background size and repeat properties. */
+  background-size: 100%;
+  background-repeat: repeat;
 
+  /* Use the text as a mask for the background. */
+  /* This will show the gradient as a text color rather than element bg. */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+}
+
+.heading{
+  font-family: 'Montserrat', sans-serif; /* Replace with your preferred font */
+  font-weight: bold;
+  font-size: 28px; /* Adjust font size as needed */
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #333; /* Adjust color as needed */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btnCustom{
+  background-color: #28156F !important;
+  color: #fff !important;
+  transition: opacity 0.5s ease-out !important;
+}
+
+.btnCustom:hover{
+  background-color: #28156F ;
+  opacity: 0.7;
+  transition: opacity 0.5s ease-in;
+}
+
+.shadowImg{
+  box-shadow: 5px 5px 13px #28156F;
+  margin-top: 2%;
+}
+
+.img-fluid1{
+  height: 200px;
+}
+
+.tablinks {
+  background-color: #f1f1f1;
+  color: #333;
+  border: 1px solid #ddd;
+  padding: 8px;
+  width: 100px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 4px;
+}
+
+.tablinks:hover {
+  background-color: #ddd;
+}
+
+.tablinks.active {
+  background-color: #28156F;
+  background-image: linear-gradient(90deg, #28156F, #614ea1);
+  background-size: 100%;
+  color: white;
+}
