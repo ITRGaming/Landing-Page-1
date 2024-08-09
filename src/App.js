@@ -7,9 +7,10 @@ import "owl.carousel/dist/assets/owl.carousel.min.css";
 import "owl.carousel/dist/assets/owl.theme.default.min.css";
 import { CitySelect, StateSelect } from "react-country-state-city";
 import "react-country-state-city/dist/react-country-state-city.css";
+// import { FontAwesomeIcon } from 'react-fontawesome';
 import logoNav from "./images/logo-nav.png";
-import sliderImg from "./images/studentLec.jpg";
-import sliderImg2 from "./images/onlineLec.jpg";
+import sliderImg from "./images/councelorCalling.jpg";
+import sliderImg2 from "./images/student3.jpg";
 import course1 from "../src/images/course/1.jpg";
 import course2 from "../src/images/course/2.jpg";
 import course3 from "../src/images/course/3.jpg";
@@ -83,14 +84,14 @@ function App() {
           </a>
         </div>
       </nav>
-      <div className="row me-1">
-        <div className="col-md-9">
+      <div className="row col-12 me-1 ">
+        <div className="">
           <OwlCarousel
             loop
             autoplay="true"
             items={"1"}
             width={"100%"}
-            className=""
+            className="topCarousel"
           >
             <div className="" data-bs-interval="2000">
               <img src={sliderImg} className="d-block " alt="Online Learning" />
@@ -103,40 +104,38 @@ function App() {
               />
             </div>
           </OwlCarousel>
-        </div>
-        <div className="col-md-3 mt-3">
           <form class="g-3 row enquiryForm">
             <div className="header">
-              <h3 className="title">Connect With Our Counsellor</h3>
-              <i className="imp">
+              <h3 className="title">Enquire Now</h3>
+              {/* <i className="imp">
                 *Please provide the information below, and our counsellor will
                 get in touch with you.
-              </i>
+              </i> */}
             </div>
-            <div className="form-group col-lg-6 mb-3">
-              <label className="form-label" name="Enter your Name">
+            <div className="form-group col-lg-6 mb-1">
+              <label className="form-label col-form-label-sm" name="Enter your Name">
                 Enter your Name
               </label>
               <br />
               <input
-                className="form-control"
+                className="form-control col-form-control-sm"
                 type="text"
                 name="Enter your Name"
               ></input>
             </div>
-            <div className="form-group col-lg-6 mb-3">
-              <label className="form-label" name="Enter your Email">
+            <div className="form-group col-lg-6 mb-1">
+              <label className="form-label col-form-label-sm" name="Enter your Email">
                 Enter your Email
               </label>
               <br />
               <input
-                className="form-control"
+                className="form-control col-form-control-sm"
                 type="text"
                 name="Enter your Email"
               ></input>
             </div>
 
-            <div className="form-group col-lg-6 mb-3">
+            <div className="form-group col-lg-6 mb-1">
               <label className="form-label" name="Enter your Number">
                 Enter your Number
               </label>
@@ -148,7 +147,7 @@ function App() {
                 pattern={"[0-9]{5}-[0-9]{5}"}
               ></input>
             </div>
-            <div className="form-group col-lg-6 mb-3">
+            <div className="form-group col-lg-6 mb-1">
               <label className="form-label" name="Enter your State">
                 Enter your State
               </label>
@@ -163,7 +162,7 @@ function App() {
               />
             </div>
 
-            <div className="form-group col-lg-6 mb-3">
+            <div className="form-group col-lg-6 mb-1">
               <label className="form-label" name="Enter your City">
                 Enter your City
               </label>
@@ -177,7 +176,7 @@ function App() {
                 placeHolder="Select City"
               />
             </div>
-            <div className="form-group col-lg-6 mb-3">
+            <div className="form-group col-lg-6 mb-1">
               <label className="form-label">
                 Degree you are looking for *<br />
               </label>
@@ -198,8 +197,8 @@ function App() {
             </div>
             <div className="checkbox">
               <input type="checkbox"></input>
-              <p>
-                By clicking on the above button, I authorize ISBMU and/or their
+              <p className="imp">
+                By clicking on the above button, I authorize ISTM and/or their
                 representative to contact me via Phone, SMS, WhatsApp, and/or
                 email.
               </p>
@@ -216,20 +215,19 @@ function App() {
         </div>
       </div>
 
-      <div className="">
+      <div className="blueSection">
         <section id="programmes">
           <div className="container py-5 wow fadeInUp" data-wow-delay="0.1s">
             <div className="text-center">
               <h1 className="heading">
                 <span className="impGradeint">Our Future-ready</span> Programmes
               </h1>
-              <h6 className="section-title bg-white text-center text-primary px-3">
+              <h6 className="subTitle text-center px-3">
                 Preparing you for the challenges of tomorrow
               </h6>
             </div>
             <div>
               <div className="tab">
-                
                 <button
                   className={`tablinks ${activeTab === "PHD" ? "active" : ""}`}
                   onClick={() => handleClick("PHD")}
@@ -271,22 +269,25 @@ function App() {
                 <div className="phd-carousel position-relative">
                   <OwlCarousel
                     loop
+                    autoplay
+                    className="programCarousel"
                     responsive={{
                       0: {
-                        items: 1,
-                        autoplay: true,
-                        autoplayTimeout: 1000,
+                        items: 1,                       
+                        autoplayTimeout: 3000,
                       },
                       770: {
-                        items: 3,
-                        autoplay: true,
-                        autoplayTimeout: 1000,
+                        items: 2,
+                        autoplayTimeout: 3000,
                       },
+                      1000: {
+                        items: 3,
+                        autoplayTimeout: 3000,
+                      }
                     }}
                   >
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course11}
@@ -313,7 +314,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course4}
@@ -340,7 +340,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course2}
@@ -367,7 +366,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course3}
@@ -396,7 +394,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course13}
@@ -425,7 +422,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course10}
@@ -454,7 +450,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course7}
@@ -481,7 +476,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course33}
@@ -508,7 +502,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course4}
@@ -537,7 +530,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course14}
@@ -564,7 +556,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course24}
@@ -593,7 +584,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course34}
@@ -622,7 +612,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course5}
@@ -649,7 +638,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course15}
@@ -676,7 +664,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course25}
@@ -715,22 +702,25 @@ function App() {
                 <div className="phd-carousel position-relative">
                   <OwlCarousel
                     loop
+                    autoplay
+                    className="programCarousel"
                     responsive={{
                       0: {
-                        items: 1,
-                        autoplay: true,
-                        autoplayTimeout: 1000,
+                        items: 1,                       
+                        autoplayTimeout: 3000,
                       },
                       770: {
-                        items: 3,
-                        autoplay: true,
-                        autoplayTimeout: 1000,
+                        items: 2,
+                        autoplayTimeout: 3000,
                       },
+                      1000: {
+                        items: 3,
+                        autoplayTimeout: 3000,
+                      }
                     }}
                   >
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course1}
@@ -757,7 +747,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course2}
@@ -787,7 +776,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course3}
@@ -817,7 +805,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course4}
@@ -846,7 +833,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course5}
@@ -875,7 +861,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course6}
@@ -904,7 +889,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course7}
@@ -931,7 +915,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course8}
@@ -960,7 +943,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course9}
@@ -987,7 +969,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course10}
@@ -1014,7 +995,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course11}
@@ -1043,7 +1023,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course12}
@@ -1070,7 +1049,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course13}
@@ -1099,7 +1077,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course14}
@@ -1128,7 +1105,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course15}
@@ -1157,7 +1133,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course16}
@@ -1184,7 +1159,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course17}
@@ -1213,7 +1187,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course18}
@@ -1242,7 +1215,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course19}
@@ -1271,7 +1243,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course20}
@@ -1298,7 +1269,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course21}
@@ -1327,7 +1297,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course22}
@@ -1354,7 +1323,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course23}
@@ -1383,7 +1351,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course24}
@@ -1412,7 +1379,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course25}
@@ -1439,7 +1405,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course26}
@@ -1468,7 +1433,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course27}
@@ -1497,7 +1461,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course28}
@@ -1526,7 +1489,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course29}
@@ -1555,7 +1517,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course30}
@@ -1584,7 +1545,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course31}
@@ -1613,7 +1573,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course32}
@@ -1642,7 +1601,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course33}
@@ -1671,7 +1629,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course34}
@@ -1700,7 +1657,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course35}
@@ -1729,7 +1685,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course36}
@@ -1756,7 +1711,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course37}
@@ -1795,22 +1749,25 @@ function App() {
                 <div className="phd-carousel position-relative">
                   <OwlCarousel
                     loop
+                    autoplay
+                    className="programCarousel"
                     responsive={{
                       0: {
-                        items: 1,
-                        autoplay: true,
-                        autoplayTimeout: 1000,
+                        items: 1,                       
+                        autoplayTimeout: 3000,
                       },
                       770: {
-                        items: 3,
-                        autoplay: true,
-                        autoplayTimeout: 1000,
+                        items: 2,
+                        autoplayTimeout: 3000,
                       },
+                      1000: {
+                        items: 3,
+                        autoplayTimeout: 3000,
+                      }
                     }}
                   >
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course10}
@@ -1837,7 +1794,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course20}
@@ -1866,7 +1822,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course30}
@@ -1896,7 +1851,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course29}
@@ -1926,7 +1880,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course19}
@@ -1955,7 +1908,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course9}
@@ -1982,7 +1934,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course28}
@@ -2011,7 +1962,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course18}
@@ -2038,7 +1988,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course8}
@@ -2065,7 +2014,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course27}
@@ -2095,7 +2043,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course17}
@@ -2125,7 +2072,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course7}
@@ -2154,7 +2100,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course26}
@@ -2183,7 +2128,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course16}
@@ -2212,7 +2156,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course6}
@@ -2242,7 +2185,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course25}
@@ -2269,7 +2211,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course15}
@@ -2296,7 +2237,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course5}
@@ -2335,22 +2275,25 @@ function App() {
                 <div className="phd-carousel position-relative">
                   <OwlCarousel
                     loop
+                    autoplay
+                    className="programCarousel"
                     responsive={{
                       0: {
-                        items: 1,
-                        autoplay: true,
-                        autoplayTimeout: 1000,
+                        items: 1,                       
+                        autoplayTimeout: 3000,
                       },
                       770: {
-                        items: 3,
-                        autoplay: true,
-                        autoplayTimeout: 1000,
+                        items: 2,
+                        autoplayTimeout: 3000,
                       },
+                      1000: {
+                        items: 3,
+                        autoplayTimeout: 3000,
+                      }
                     }}
                   >
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course2}
@@ -2379,7 +2322,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course12}
@@ -2406,7 +2348,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course22}
@@ -2433,7 +2374,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course32}
@@ -2462,7 +2402,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course3}
@@ -2489,7 +2428,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course13}
@@ -2518,7 +2456,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course23}
@@ -2545,7 +2482,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course33}
@@ -2572,7 +2508,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course4}
@@ -2599,7 +2534,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course14}
@@ -2626,7 +2560,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course24}
@@ -2656,7 +2589,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course34}
@@ -2686,7 +2618,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course5}
@@ -2715,7 +2646,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course15}
@@ -2744,7 +2674,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course25}
@@ -2773,7 +2702,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course35}
@@ -2800,7 +2728,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course6}
@@ -2830,7 +2757,6 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        
                         <img
                           className="img-fluid1"
                           src={course16}
@@ -2866,11 +2792,98 @@ function App() {
         </section>
       </div>
 
+      <div className="section_our_solution">
+        <div className="row">
+          <div className="col-lg-12 col-md-12 col-sm-12">
+            <div className="our_solution_category">
+              <div className="solution_cards_box sol_card_top_3">
+                <div className="solution_card">
+                  <div className="hover_color_bubble"></div>
+                  <div className="so_top_icon">
+                  <i className="fa-solid fa-pen-ruler"></i>
+                  </div>
+                  <div className="solu_title">
+                    <h3>Study From The Best</h3>
+                  </div>
+                  <div className="solu_description">
+                    <p>
+                      ISTM offers a wide range of distinguished professors who
+                      hold distinguished positions are offering excellent
+                      education in the Business and Management field. Students
+                      will be getting a wide range of exposure and a sufficient
+                      amount of good education.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="solution_cards_box sol_card_top_3">
+                <div className="solution_card">
+                  <div className="hover_color_bubble"></div>
+                  <div className="so_top_icon"></div>
+                  <div className="solu_title">
+                    <h3>Career Developement</h3>
+                  </div>
+                  <div className="solu_description">
+                    <p>
+                      The institution offers a great opportunity for students to
+                      do full grooming for their professional life. ISTM trains
+                      students in such a way that they are able to answer
+                      confidently in interviews and how well to conduct. The
+                      overall look, personality, and intelligence of their
+                      students.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="solution_cards_box sol_card_top_3">
+                <div className="solution_card">
+                  <div className="hover_color_bubble"></div>
+                  <div className="so_top_icon"></div>
+                  <div className="solu_title">
+                    <h3>Online Learning</h3>
+                  </div>
+                  <div className="solu_description">
+                    <p>
+                      Teachers and Students can reap the benefits of learning
+                      virtually. Online education has become a significant part
+                      of our life and help a lot of educational professionals to
+                      teach their students in a more relaxed and concrete way.
+                      ISTM has taken the plunge to provide high-quality
+                      education at any cost.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="solution_cards_box sol_card_top_3">
+                <div className="solution_card">
+                  <div className="hover_color_bubble"></div>
+                  <div className="so_top_icon"></div>
+                  <div className="solu_title">
+                    <h3>Coaching</h3>
+                  </div>
+                  <div className="solu_description">
+                    <p>
+                      Courses are planned to develop optimism amongst students.
+                      It helps to build legitimate skills and convey a vast
+                      amount of knowledge for students to have a flourishing
+                      career. Because of a good team of teachers and a
+                      disciplined environment, students will be able to grasp it
+                      quickly and choose the right job in an appropriate
+                      company.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="">
         <section id="alumni">
           <div className="container py-5">
             <div className="text-center wow fadeInUp" data-wow-delay="0.1s">
-              <h1 className="">
+              <h1 className="heading">
                 <span className="impGradeint">Working</span> At
               </h1>
               <h6 className="section-title bg-white text-center text-primary px-3">
@@ -2909,7 +2922,6 @@ function App() {
                 >
                   <div className="team-item">
                     <div className="overflow-hidden">
-                      
                       <img
                         className="img-fluid2"
                         src={alumni1}
@@ -2925,7 +2937,6 @@ function App() {
                 >
                   <div className="team-item">
                     <div className="overflow-hidden">
-                      
                       <img
                         className="img-fluid2"
                         src={alumni2}
@@ -2941,7 +2952,6 @@ function App() {
                 >
                   <div className="team-item">
                     <div className="overflow-hidden">
-                      
                       <img
                         className="img-fluid2"
                         src={alumni3}
@@ -2957,7 +2967,6 @@ function App() {
                 >
                   <div className="team-item">
                     <div className="overflow-hidden">
-                      
                       <img
                         className="img-fluid2"
                         src={alumni4}
@@ -2973,7 +2982,6 @@ function App() {
                 >
                   <div className="team-item">
                     <div className="overflow-hidden">
-                      
                       <img
                         className="img-fluid2"
                         src={alumni5}
@@ -2989,7 +2997,6 @@ function App() {
                 >
                   <div className="team-item">
                     <div className="overflow-hidden">
-                      
                       <img
                         className="img-fluid2"
                         src={alumni6}
@@ -3005,7 +3012,6 @@ function App() {
                 >
                   <div className="team-item">
                     <div className="overflow-hidden">
-                      
                       <img
                         className="img-fluid2"
                         src={alumni7}
@@ -3021,7 +3027,6 @@ function App() {
                 >
                   <div className="team-item">
                     <div className="overflow-hidden">
-                      
                       <img
                         className="img-fluid2"
                         src={alumni8}
@@ -3037,7 +3042,6 @@ function App() {
                 >
                   <div className="team-item">
                     <div className="overflow-hidden">
-                      
                       <img
                         className="img-fluid2"
                         src={alumni9}
@@ -3053,7 +3057,6 @@ function App() {
                 >
                   <div className="team-item">
                     <div className="overflow-hidden">
-                      
                       <img
                         className="img-fluid2"
                         src={alumni10}
@@ -3069,7 +3072,6 @@ function App() {
                 >
                   <div className="team-item">
                     <div className="overflow-hidden">
-                      
                       <img
                         className="img-fluid2"
                         src={alumni11}
@@ -3085,7 +3087,6 @@ function App() {
                 >
                   <div className="team-item">
                     <div className="overflow-hidden">
-                      
                       <img
                         className="img-fluid2"
                         src={alumni12}
@@ -3101,7 +3102,6 @@ function App() {
                 >
                   <div className="team-item">
                     <div className="overflow-hidden">
-                      
                       <img
                         className="img-fluid2"
                         src={alumni13}
@@ -3117,7 +3117,6 @@ function App() {
                 >
                   <div className="team-item">
                     <div className="overflow-hidden">
-                      
                       <img
                         className="img-fluid2"
                         src={alumni14}
@@ -3133,7 +3132,6 @@ function App() {
                 >
                   <div className="team-item">
                     <div className="overflow-hidden">
-                      
                       <img
                         className="img-fluid2"
                         src={alumni15}
@@ -3149,7 +3147,6 @@ function App() {
                 >
                   <div className="team-item">
                     <div className="overflow-hidden">
-                      
                       <img
                         className="img-fluid2"
                         src={alumni16}
@@ -3165,7 +3162,6 @@ function App() {
                 >
                   <div className="team-item">
                     <div className="overflow-hidden">
-                      
                       <img
                         className="img-fluid2"
                         src={alumni17}
@@ -3180,6 +3176,9 @@ function App() {
           </div>
         </section>
       </div>
+
+      
+
       <footer></footer>
     </div>
   );

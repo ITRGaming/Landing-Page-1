@@ -12,6 +12,138 @@ test('renders learn react link', () => {
 
 <div className="container-fluid" style = {{ marginTop: '30px' }}>
             <div className="row">
+
+
+            <form class="g-3 row enquiryForm">
+            <div className="header">
+              <h3 className="title">Connect With Our Counsellor</h3>
+              <i className="imp">
+                *Please provide the information below, and our counsellor will
+                get in touch with you.
+              </i>
+            </div>
+            <div className="form-group col-lg-6 mb-1">
+              <label className="form-label col-form-label-sm" name="Enter your Name">
+                Enter your Name
+              </label>
+              <br />
+              <input
+                className="form-control col-form-control-sm"
+                type="text"
+                name="Enter your Name"
+              ></input>
+            </div>
+            <div className="form-group col-lg-6 mb-1">
+              <label className="form-label col-form-label-sm" name="Enter your Email">
+                Enter your Email
+              </label>
+              <br />
+              <input
+                className="form-control col-form-control-sm"
+                type="text"
+                name="Enter your Email"
+              ></input>
+            </div>
+
+            <div className="form-group col-lg-6 mb-1">
+              <label className="form-label" name="Enter your Number">
+                Enter your Number
+              </label>
+              <br />
+              <input
+                className="form-control"
+                type="tel"
+                name="Enter your Number"
+                pattern={"[0-9]{5}-[0-9]{5}"}
+              ></input>
+            </div>
+            <div className="form-group col-lg-6 mb-1">
+              <label className="form-label" name="Enter your State">
+                Enter your State
+              </label>
+              <br />
+              <StateSelect
+                countryid={101}
+                onChange={(e) => {
+                  setstateid(e.id);
+                }}
+                placeHolder="Select State"
+                className="selectorIn"
+              />
+            </div>
+
+            <div className="form-group col-lg-6 mb-1">
+              <label className="form-label" name="Enter your City">
+                Enter your City
+              </label>
+              <br />
+              <CitySelect
+                countryid={101}
+                stateid={stateid}
+                onChange={(e) => {
+                  console.log(e);
+                }}
+                placeHolder="Select City"
+              />
+            </div>
+            <div className="form-group col-lg-6 mb-1">
+              <label className="form-label">
+                Degree you are looking for *<br />
+              </label>
+              <select className="form-select" name="selecteddegree">
+                <option value="doctorate">Doctorate</option>
+                <option value="post graduation">Post Graduation</option>
+                <option value="graduation">graduation</option>
+                <option value="diploma">Diploma</option>
+                <option value="certificate">Certificate</option>
+              </select>
+            </div>
+
+            <div className="selector">
+              <label className="form-label">
+                Select course *<br />
+              </label>
+              <input className="form-control"></input>
+            </div>
+            <div className="checkbox">
+              <input type="checkbox"></input>
+              <p className="imp">
+                By clicking on the above button, I authorize ISTM and/or their
+                representative to contact me via Phone, SMS, WhatsApp, and/or
+                email.
+              </p>
+            </div>
+            <div className="modal-footer row">
+              <button
+                type="submit"
+                className="btn btn-primary col-md custom-button"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+
+
+          <OwlCarousel
+            loop
+            autoplay="true"
+            items={"1"}
+            width={"100%"}
+            className="topCarousel"
+          >
+            <div className="" data-bs-interval="2000">
+              <img src={sliderImg} className="d-block " alt="Online Learning" />
+            </div>
+            <div className="" data-bs-interval="2000">
+              <img
+                src={sliderImg2}
+                className="d-block "
+                alt="Online Learning"
+              />
+            </div>
+          </OwlCarousel>
+
+
                 <div className="col-12 filter-content overflow-hidden">
                     <ul className="hover-option7 portfolio-wrapper grid grid-4col xl-grid-4col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-medium" style = {{ position: 'relative', height: '4576px' }}>
                         <li className="grid-sizer"></li>
@@ -116,3 +248,6 @@ test('renders learn react link', () => {
                 </div>
             </div>
         </div>
+
+
+
