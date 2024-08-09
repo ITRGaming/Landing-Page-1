@@ -5,6 +5,8 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.min.css";
 import "owl.carousel/dist/assets/owl.theme.default.min.css";
+import { CitySelect, StateSelect } from "react-country-state-city";
+import "react-country-state-city/dist/react-country-state-city.css";
 import logoNav from "./images/logo-nav.png";
 import sliderImg from "./images/studentLec.jpg";
 import sliderImg2 from "./images/onlineLec.jpg";
@@ -64,6 +66,7 @@ import alumni16 from "../src/images/alumni/New16.jpg";
 import alumni17 from "../src/images/alumni/New17.jpg";
 
 function App() {
+  const [stateid, setstateid] = useState(0);
   const [activeTab, setActiveTab] = useState("PHD");
 
   const handleClick = (tabId) => {
@@ -80,105 +83,140 @@ function App() {
           </a>
         </div>
       </nav>
-      <div className="row">
-        <div className="row justify-content-around">
-        <OwlCarousel
-          loop
-          autoplay="true"
-          items={"1"}
-          width={'70%'}
-          className="col"
-        >
-          <div className="" data-bs-interval="2000">
-            <img
-              src={sliderImg}
-              className="d-block "
-              alt="Online Learning"
-            />
-          </div>
-          <div className="" data-bs-interval="2000">
-            <img
-              src={sliderImg2}
-              className="d-block "
-              alt="Online Learning"
-            />
-          </div>
-        </OwlCarousel>
-        <form class="row g-3 col">
-          <div class="col-md-6">
-            <label for="inputEmail4" class="form-label">
-              Email
-            </label>
-            <input type="email" class="form-control" id="inputEmail4" />
-          </div>
-          <div class="col-md-6">
-            <label for="inputPassword4" class="form-label">
-              Password
-            </label>
-            <input type="password" class="form-control" id="inputPassword4" />
-          </div>
-          <div class="col-12">
-            <label for="inputAddress" class="form-label">
-              Address
-            </label>
-            <input
-              type="text"
-              class="form-control"
-              id="inputAddress"
-              placeholder="1234 Main St"
-            />
-          </div>
-          <div class="col-12">
-            <label for="inputAddress2" class="form-label">
-              Address 2
-            </label>
-            <input
-              type="text"
-              class="form-control"
-              id="inputAddress2"
-              placeholder="Apartment, studio, or floor"
-            />
-          </div>
-          <div class="col-md-6">
-            <label for="inputCity" class="form-label">
-              City
-            </label>
-            <input type="text" class="form-control" id="inputCity" />
-          </div>
-          <div class="col-md-4">
-            <label for="inputState" class="form-label">
-              State
-            </label>
-            <select id="inputState" class="form-select">
-              <option selected>Choose...</option>
-              <option>...</option>
-            </select>
-          </div>
-          <div class="col-md-2">
-            <label for="inputZip" class="form-label">
-              Zip
-            </label>
-            <input type="text" class="form-control" id="inputZip" />
-          </div>
-          <div class="col-12">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="gridCheck" />
-              <label class="form-check-label" for="gridCheck">
-                Check me out
-              </label>
+      <div className="row me-1">
+        <div className="col-md-9">
+          <OwlCarousel
+            loop
+            autoplay="true"
+            items={"1"}
+            width={"100%"}
+            className=""
+          >
+            <div className="" data-bs-interval="2000">
+              <img src={sliderImg} className="d-block " alt="Online Learning" />
             </div>
-          </div>
-          <div class="col-12">
-            <button type="submit" class="btn btn-primary">
-              Sign in
-            </button>
-          </div>
-        </form>
+            <div className="" data-bs-interval="2000">
+              <img
+                src={sliderImg2}
+                className="d-block "
+                alt="Online Learning"
+              />
+            </div>
+          </OwlCarousel>
+        </div>
+        <div className="col-md-3 mt-3">
+          <form class="g-3 row enquiryForm">
+            <div className="header">
+              <h3 className="title">Connect With Our Counsellor</h3>
+              <i className="imp">
+                *Please provide the information below, and our counsellor will
+                get in touch with you.
+              </i>
+            </div>
+            <div className="form-group col-lg-6 mb-3">
+              <label className="form-label" name="Enter your Name">
+                Enter your Name
+              </label>
+              <br />
+              <input
+                className="form-control"
+                type="text"
+                name="Enter your Name"
+              ></input>
+            </div>
+            <div className="form-group col-lg-6 mb-3">
+              <label className="form-label" name="Enter your Email">
+                Enter your Email
+              </label>
+              <br />
+              <input
+                className="form-control"
+                type="text"
+                name="Enter your Email"
+              ></input>
+            </div>
+
+            <div className="form-group col-lg-6 mb-3">
+              <label className="form-label" name="Enter your Number">
+                Enter your Number
+              </label>
+              <br />
+              <input
+                className="form-control"
+                type="tel"
+                name="Enter your Number"
+                pattern={"[0-9]{5}-[0-9]{5}"}
+              ></input>
+            </div>
+            <div className="form-group col-lg-6 mb-3">
+              <label className="form-label" name="Enter your State">
+                Enter your State
+              </label>
+              <br />
+              <StateSelect
+                countryid={101}
+                onChange={(e) => {
+                  setstateid(e.id);
+                }}
+                placeHolder="Select State"
+                className="selectorIn"
+              />
+            </div>
+
+            <div className="form-group col-lg-6 mb-3">
+              <label className="form-label" name="Enter your City">
+                Enter your City
+              </label>
+              <br />
+              <CitySelect
+                countryid={101}
+                stateid={stateid}
+                onChange={(e) => {
+                  console.log(e);
+                }}
+                placeHolder="Select City"
+              />
+            </div>
+            <div className="form-group col-lg-6 mb-3">
+              <label className="form-label">
+                Degree you are looking for *<br />
+              </label>
+              <select className="form-select" name="selecteddegree">
+                <option value="doctorate">Doctorate</option>
+                <option value="post graduation">Post Graduation</option>
+                <option value="graduation">graduation</option>
+                <option value="diploma">Diploma</option>
+                <option value="certificate">Certificate</option>
+              </select>
+            </div>
+
+            <div className="selector">
+              <label className="form-label">
+                Select course *<br />
+              </label>
+              <input className="form-control"></input>
+            </div>
+            <div className="checkbox">
+              <input type="checkbox"></input>
+              <p>
+                By clicking on the above button, I authorize ISBMU and/or their
+                representative to contact me via Phone, SMS, WhatsApp, and/or
+                email.
+              </p>
+            </div>
+            <div className="modal-footer row">
+              <button
+                type="submit"
+                className="btn btn-primary col-md custom-button"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
         </div>
       </div>
 
-
-      <div className="row">
+      <div className="">
         <section id="programmes">
           <div className="container py-5 wow fadeInUp" data-wow-delay="0.1s">
             <div className="text-center">
@@ -191,14 +229,14 @@ function App() {
             </div>
             <div>
               <div className="tab">
-                {" "}
+                
                 <button
                   className={`tablinks ${activeTab === "PHD" ? "active" : ""}`}
                   onClick={() => handleClick("PHD")}
                   id="defaultOpen"
                 >
                   Ph.D.
-                </button>{" "}
+                </button>
                 <button
                   className={`tablinks ${
                     activeTab === "Masters" ? "active" : ""
@@ -206,7 +244,7 @@ function App() {
                   onClick={() => handleClick("Masters")}
                 >
                   Masters
-                </button>{" "}
+                </button>
                 <button
                   className={`tablinks ${
                     activeTab === "Bachelors" ? "active" : ""
@@ -214,7 +252,7 @@ function App() {
                   onClick={() => handleClick("Bachelors")}
                 >
                   Bachelors
-                </button>{" "}
+                </button>
                 <button
                   className={`tablinks ${
                     activeTab === "Diploma" ? "active" : ""
@@ -222,7 +260,7 @@ function App() {
                   onClick={() => handleClick("Diploma")}
                 >
                   Diploma
-                </button>{" "}
+                </button>
               </div>
 
               <div
@@ -248,7 +286,7 @@ function App() {
                   >
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course11}
@@ -275,7 +313,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course4}
@@ -302,7 +340,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course2}
@@ -329,7 +367,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course3}
@@ -351,12 +389,14 @@ function App() {
                         </div>
                       </div>
                       <div className="testimonial-text bg-light text-center p-4">
-                        <p className="mb-0">Ph.D. Program (Arts & Huminities)</p>
+                        <p className="mb-0">
+                          Ph.D. Program (Arts & Huminities)
+                        </p>
                       </div>
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course13}
@@ -385,7 +425,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course10}
@@ -414,7 +454,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course7}
@@ -441,7 +481,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course33}
@@ -468,7 +508,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course4}
@@ -490,12 +530,14 @@ function App() {
                         </div>
                       </div>
                       <div className="testimonial-text bg-light text-center p-4">
-                        <p className="mb-0">Ph.D. Program (Yoga & Naturopathy)</p>
+                        <p className="mb-0">
+                          Ph.D. Program (Yoga & Naturopathy)
+                        </p>
                       </div>
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course14}
@@ -522,7 +564,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course24}
@@ -551,7 +593,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course34}
@@ -580,7 +622,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course5}
@@ -607,7 +649,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course15}
@@ -634,7 +676,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course25}
@@ -688,7 +730,7 @@ function App() {
                   >
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course1}
@@ -715,7 +757,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course2}
@@ -745,7 +787,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course3}
@@ -768,13 +810,14 @@ function App() {
                       </div>
                       <div className="testimonial-text bg-light text-center p-4">
                         <p className="mb-0">
-                          Master of Arts In Comperitive Religion & Philosophy (MA)
+                          Master of Arts In Comperitive Religion & Philosophy
+                          (MA)
                         </p>
                       </div>
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course4}
@@ -803,7 +846,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course5}
@@ -825,12 +868,14 @@ function App() {
                         </div>
                       </div>
                       <div className="testimonial-text bg-light text-center p-4">
-                        <p className="mb-0">Master of Arts In Economics (M.A)</p>
+                        <p className="mb-0">
+                          Master of Arts In Economics (M.A)
+                        </p>
                       </div>
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course6}
@@ -852,12 +897,14 @@ function App() {
                         </div>
                       </div>
                       <div className="testimonial-text bg-light text-center p-4">
-                        <p className="mb-0">Master of Arts In Education (M.A)</p>
+                        <p className="mb-0">
+                          Master of Arts In Education (M.A)
+                        </p>
                       </div>
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course7}
@@ -884,7 +931,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course8}
@@ -906,12 +953,14 @@ function App() {
                         </div>
                       </div>
                       <div className="testimonial-text bg-light text-center p-4">
-                        <p className="mb-0">Master of Arts In Geography (M.A)</p>
+                        <p className="mb-0">
+                          Master of Arts In Geography (M.A)
+                        </p>
                       </div>
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course9}
@@ -938,7 +987,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course10}
@@ -965,7 +1014,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course11}
@@ -994,7 +1043,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course12}
@@ -1021,7 +1070,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course13}
@@ -1050,7 +1099,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course14}
@@ -1072,12 +1121,14 @@ function App() {
                         </div>
                       </div>
                       <div className="testimonial-text bg-light text-center p-4">
-                        <p className="mb-0">Master of Arts In Psychology (M.A)</p>
+                        <p className="mb-0">
+                          Master of Arts In Psychology (M.A)
+                        </p>
                       </div>
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course15}
@@ -1106,7 +1157,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course16}
@@ -1133,7 +1184,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course17}
@@ -1155,12 +1206,14 @@ function App() {
                         </div>
                       </div>
                       <div className="testimonial-text bg-light text-center p-4">
-                        <p className="mb-0">Master of Arts In Sociology (M.A)</p>
+                        <p className="mb-0">
+                          Master of Arts In Sociology (M.A)
+                        </p>
                       </div>
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course18}
@@ -1189,7 +1242,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course19}
@@ -1218,7 +1271,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course20}
@@ -1245,7 +1298,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course21}
@@ -1274,7 +1327,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course22}
@@ -1301,7 +1354,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course23}
@@ -1330,7 +1383,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course24}
@@ -1359,7 +1412,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course25}
@@ -1386,7 +1439,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course26}
@@ -1415,7 +1468,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course27}
@@ -1437,12 +1490,14 @@ function App() {
                         </div>
                       </div>
                       <div className="testimonial-text bg-light text-center p-4">
-                        <p className="mb-0">Master of Science In Biology (MSc)</p>
+                        <p className="mb-0">
+                          Master of Science In Biology (MSc)
+                        </p>
                       </div>
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course28}
@@ -1471,7 +1526,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course29}
@@ -1493,12 +1548,14 @@ function App() {
                         </div>
                       </div>
                       <div className="testimonial-text bg-light text-center p-4">
-                        <p className="mb-0">Master of Science In Botany (MSc)</p>
+                        <p className="mb-0">
+                          Master of Science In Botany (MSc)
+                        </p>
                       </div>
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course30}
@@ -1527,7 +1584,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course31}
@@ -1556,7 +1613,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course32}
@@ -1585,7 +1642,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course33}
@@ -1614,7 +1671,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course34}
@@ -1636,12 +1693,14 @@ function App() {
                         </div>
                       </div>
                       <div className="testimonial-text bg-light text-center p-4">
-                        <p className="mb-0">Master of Science In Physics (MSc)</p>
+                        <p className="mb-0">
+                          Master of Science In Physics (MSc)
+                        </p>
                       </div>
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course35}
@@ -1663,12 +1722,14 @@ function App() {
                         </div>
                       </div>
                       <div className="testimonial-text bg-light text-center p-4">
-                        <p className="mb-0">Master of Science In Zoology (MSc)</p>
+                        <p className="mb-0">
+                          Master of Science In Zoology (MSc)
+                        </p>
                       </div>
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course36}
@@ -1695,7 +1756,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course37}
@@ -1727,7 +1788,9 @@ function App() {
               <div
                 id="Bachelors"
                 className="tabcontent"
-                style={{ display: activeTab === "Bachelors" ? "block" : "none" }}
+                style={{
+                  display: activeTab === "Bachelors" ? "block" : "none",
+                }}
               >
                 <div className="phd-carousel position-relative">
                   <OwlCarousel
@@ -1747,7 +1810,7 @@ function App() {
                   >
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course10}
@@ -1774,7 +1837,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course20}
@@ -1803,7 +1866,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course30}
@@ -1833,7 +1896,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course29}
@@ -1856,14 +1919,14 @@ function App() {
                       </div>
                       <div className="testimonial-text bg-light text-center p-4">
                         <p className="mb-0">
-                          Bachelors in Business Administration & Bachelors of Law
-                          (BBA-LLB)
+                          Bachelors in Business Administration & Bachelors of
+                          Law (BBA-LLB)
                         </p>
                       </div>
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course19}
@@ -1892,7 +1955,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course9}
@@ -1919,7 +1982,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course28}
@@ -1948,7 +2011,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course18}
@@ -1975,7 +2038,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course8}
@@ -2002,7 +2065,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course27}
@@ -2032,7 +2095,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course17}
@@ -2055,13 +2118,14 @@ function App() {
                       </div>
                       <div className="testimonial-text bg-light text-center p-4">
                         <p className="mb-0">
-                          Bachelor of Science in Microbiology (B.Sc.-Microbiology)
+                          Bachelor of Science in Microbiology
+                          (B.Sc.-Microbiology)
                         </p>
                       </div>
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course7}
@@ -2090,7 +2154,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course26}
@@ -2119,7 +2183,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course16}
@@ -2148,7 +2212,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course6}
@@ -2171,13 +2235,14 @@ function App() {
                       </div>
                       <div className="testimonial-text bg-light text-center p-4">
                         <p className="mb-0">
-                          Bachelor of Science in Information technology (B.Sc.IT)
+                          Bachelor of Science in Information technology
+                          (B.Sc.IT)
                         </p>
                       </div>
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course25}
@@ -2204,7 +2269,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course15}
@@ -2231,7 +2296,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course5}
@@ -2285,7 +2350,7 @@ function App() {
                   >
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course2}
@@ -2314,7 +2379,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course12}
@@ -2341,7 +2406,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course22}
@@ -2368,7 +2433,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course32}
@@ -2397,7 +2462,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course3}
@@ -2424,7 +2489,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course13}
@@ -2453,7 +2518,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course23}
@@ -2480,7 +2545,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course33}
@@ -2507,7 +2572,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course4}
@@ -2534,7 +2599,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course14}
@@ -2561,7 +2626,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course24}
@@ -2591,7 +2656,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course34}
@@ -2614,13 +2679,14 @@ function App() {
                       </div>
                       <div className="testimonial-text bg-light text-center p-4">
                         <p className="mb-0">
-                          Post Graduate Diploma in Business Administration (PGDBA)
+                          Post Graduate Diploma in Business Administration
+                          (PGDBA)
                         </p>
                       </div>
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course5}
@@ -2649,7 +2715,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course15}
@@ -2678,7 +2744,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course25}
@@ -2707,7 +2773,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course35}
@@ -2734,7 +2800,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course6}
@@ -2764,7 +2830,7 @@ function App() {
                     </div>
                     <div className="testimonial-item text-center mx-3">
                       <div className="position-relative overflow-hidden shadowImg">
-                        {" "}
+                        
                         <img
                           className="img-fluid1"
                           src={course16}
@@ -2787,7 +2853,8 @@ function App() {
                       </div>
                       <div className="testimonial-text bg-light text-center p-4">
                         <p className="mb-0">
-                          Post Graduate Diploma in Nutrition and Dietetics (PGDND)
+                          Post Graduate Diploma in Nutrition and Dietetics
+                          (PGDND)
                         </p>
                       </div>
                     </div>
@@ -2799,7 +2866,7 @@ function App() {
         </section>
       </div>
 
-      <div className="row">
+      <div className="">
         <section id="alumni">
           <div className="container py-5">
             <div className="text-center wow fadeInUp" data-wow-delay="0.1s">
@@ -2842,13 +2909,13 @@ function App() {
                 >
                   <div className="team-item">
                     <div className="overflow-hidden">
-                      {" "}
+                      
                       <img
-                        className="img-fluid1"
+                        className="img-fluid2"
                         src={alumni1}
                         loading="lazy"
                         alt=""
-                      />{" "}
+                      />
                     </div>
                   </div>
                 </div>
@@ -2858,13 +2925,13 @@ function App() {
                 >
                   <div className="team-item">
                     <div className="overflow-hidden">
-                      {" "}
+                      
                       <img
-                        className="img-fluid1"
+                        className="img-fluid2"
                         src={alumni2}
                         loading="lazy"
                         alt=""
-                      />{" "}
+                      />
                     </div>
                   </div>
                 </div>
@@ -2874,13 +2941,13 @@ function App() {
                 >
                   <div className="team-item">
                     <div className="overflow-hidden">
-                      {" "}
+                      
                       <img
-                        className="img-fluid1"
+                        className="img-fluid2"
                         src={alumni3}
                         loading="lazy"
                         alt=""
-                      />{" "}
+                      />
                     </div>
                   </div>
                 </div>
@@ -2890,13 +2957,13 @@ function App() {
                 >
                   <div className="team-item">
                     <div className="overflow-hidden">
-                      {" "}
+                      
                       <img
-                        className="img-fluid1"
+                        className="img-fluid2"
                         src={alumni4}
                         loading="lazy"
                         alt=""
-                      />{" "}
+                      />
                     </div>
                   </div>
                 </div>
@@ -2906,13 +2973,13 @@ function App() {
                 >
                   <div className="team-item">
                     <div className="overflow-hidden">
-                      {" "}
+                      
                       <img
-                        className="img-fluid1"
+                        className="img-fluid2"
                         src={alumni5}
                         loading="lazy"
                         alt=""
-                      />{" "}
+                      />
                     </div>
                   </div>
                 </div>
@@ -2922,13 +2989,13 @@ function App() {
                 >
                   <div className="team-item">
                     <div className="overflow-hidden">
-                      {" "}
+                      
                       <img
-                        className="img-fluid1"
+                        className="img-fluid2"
                         src={alumni6}
                         loading="lazy"
                         alt=""
-                      />{" "}
+                      />
                     </div>
                   </div>
                 </div>
@@ -2938,13 +3005,13 @@ function App() {
                 >
                   <div className="team-item">
                     <div className="overflow-hidden">
-                      {" "}
+                      
                       <img
-                        className="img-fluid1"
+                        className="img-fluid2"
                         src={alumni7}
                         loading="lazy"
                         alt=""
-                      />{" "}
+                      />
                     </div>
                   </div>
                 </div>
@@ -2954,13 +3021,13 @@ function App() {
                 >
                   <div className="team-item">
                     <div className="overflow-hidden">
-                      {" "}
+                      
                       <img
-                        className="img-fluid1"
+                        className="img-fluid2"
                         src={alumni8}
                         loading="lazy"
                         alt=""
-                      />{" "}
+                      />
                     </div>
                   </div>
                 </div>
@@ -2970,13 +3037,13 @@ function App() {
                 >
                   <div className="team-item">
                     <div className="overflow-hidden">
-                      {" "}
+                      
                       <img
-                        className="img-fluid1"
+                        className="img-fluid2"
                         src={alumni9}
                         loading="lazy"
                         alt=""
-                      />{" "}
+                      />
                     </div>
                   </div>
                 </div>
@@ -2986,13 +3053,13 @@ function App() {
                 >
                   <div className="team-item">
                     <div className="overflow-hidden">
-                      {" "}
+                      
                       <img
-                        className="img-fluid1"
+                        className="img-fluid2"
                         src={alumni10}
                         loading="lazy"
                         alt=""
-                      />{" "}
+                      />
                     </div>
                   </div>
                 </div>
@@ -3002,13 +3069,13 @@ function App() {
                 >
                   <div className="team-item">
                     <div className="overflow-hidden">
-                      {" "}
+                      
                       <img
-                        className="img-fluid1"
+                        className="img-fluid2"
                         src={alumni11}
                         loading="lazy"
                         alt=""
-                      />{" "}
+                      />
                     </div>
                   </div>
                 </div>
@@ -3018,13 +3085,13 @@ function App() {
                 >
                   <div className="team-item">
                     <div className="overflow-hidden">
-                      {" "}
+                      
                       <img
-                        className="img-fluid1"
+                        className="img-fluid2"
                         src={alumni12}
                         loading="lazy"
                         alt=""
-                      />{" "}
+                      />
                     </div>
                   </div>
                 </div>
@@ -3034,13 +3101,13 @@ function App() {
                 >
                   <div className="team-item">
                     <div className="overflow-hidden">
-                      {" "}
+                      
                       <img
-                        className="img-fluid1"
+                        className="img-fluid2"
                         src={alumni13}
                         loading="lazy"
                         alt=""
-                      />{" "}
+                      />
                     </div>
                   </div>
                 </div>
@@ -3050,13 +3117,13 @@ function App() {
                 >
                   <div className="team-item">
                     <div className="overflow-hidden">
-                      {" "}
+                      
                       <img
-                        className="img-fluid1"
+                        className="img-fluid2"
                         src={alumni14}
                         loading="lazy"
                         alt=""
-                      />{" "}
+                      />
                     </div>
                   </div>
                 </div>
@@ -3066,13 +3133,13 @@ function App() {
                 >
                   <div className="team-item">
                     <div className="overflow-hidden">
-                      {" "}
+                      
                       <img
-                        className="img-fluid1"
+                        className="img-fluid2"
                         src={alumni15}
                         loading="lazy"
                         alt=""
-                      />{" "}
+                      />
                     </div>
                   </div>
                 </div>
@@ -3082,13 +3149,13 @@ function App() {
                 >
                   <div className="team-item">
                     <div className="overflow-hidden">
-                      {" "}
+                      
                       <img
-                        className="img-fluid1"
+                        className="img-fluid2"
                         src={alumni16}
                         loading="lazy"
                         alt=""
-                      />{" "}
+                      />
                     </div>
                   </div>
                 </div>
@@ -3098,13 +3165,13 @@ function App() {
                 >
                   <div className="team-item">
                     <div className="overflow-hidden">
-                      {" "}
+                      
                       <img
-                        className="img-fluid1"
+                        className="img-fluid2"
                         src={alumni17}
                         loading="lazy"
                         alt=""
-                      />{" "}
+                      />
                     </div>
                   </div>
                 </div>
