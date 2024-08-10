@@ -5,12 +5,12 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.min.css";
 import "owl.carousel/dist/assets/owl.theme.default.min.css";
-import { CitySelect, StateSelect } from "react-country-state-city";
+// import { CitySelect, StateSelect } from "react-country-state-city";
 import "react-country-state-city/dist/react-country-state-city.css";
 // import { FontAwesomeIcon } from 'react-fontawesome';
 import logoNav from "./images/logo-nav.png";
-import sliderImg from "./images/councelorCalling.jpg";
-import sliderImg2 from "./images/student3.jpg";
+// import sliderImg from "./images/councelorCalling.jpg";
+// import sliderImg2 from "./images/student3.jpg";
 import course1 from "../src/images/course/1.jpg";
 import course2 from "../src/images/course/2.jpg";
 import course3 from "../src/images/course/3.jpg";
@@ -67,7 +67,7 @@ import alumni16 from "../src/images/alumni/New16.jpg";
 import alumni17 from "../src/images/alumni/New17.jpg";
 
 function App() {
-  const [stateid, setstateid] = useState(0);
+  // const [stateid, setstateid] = useState(0);
   const [activeTab, setActiveTab] = useState("PHD");
 
   const handleClick = (tabId) => {
@@ -85,26 +85,10 @@ function App() {
         </div>
       </nav>
       <div className="row col-12 me-1 ">
-        <div className="">
-          <OwlCarousel
-            loop
-            autoplay="true"
-            items={"1"}
-            width={"100%"}
-            className="topCarousel"
-          >
-            <div className="" data-bs-interval="2000">
-              <img src={sliderImg} className="d-block " alt="Online Learning" />
-            </div>
-            <div className="" data-bs-interval="2000">
-              <img
-                src={sliderImg2}
-                className="d-block "
-                alt="Online Learning"
-              />
-            </div>
-          </OwlCarousel>
-          <form class="g-3 row enquiryForm">
+        <div className="gridDiv">
+          <div className="col-4 textImg"></div>
+          <div className="col-5 centerImg"></div>
+          <form className="g-3 row enquiryForm">
             <div className="header">
               <h3 className="title">Enquire Now</h3>
               {/* <i className="imp">
@@ -112,30 +96,30 @@ function App() {
                 get in touch with you.
               </i> */}
             </div>
-            <div className="form-group col-lg-6 mb-1">
-              <label className="form-label col-form-label-sm" name="Enter your Name">
+            <div className="form-group col-lg-6 col-md-6 mb-1 input-group-sm">
+              <label className="form-label " name="Enter your Name">
                 Enter your Name
               </label>
               <br />
               <input
-                className="form-control col-form-control-sm"
+                className="form-control "
                 type="text"
                 name="Enter your Name"
               ></input>
             </div>
-            <div className="form-group col-lg-6 mb-1">
-              <label className="form-label col-form-label-sm" name="Enter your Email">
+            <div className="form-group col-lg-6 col-md-6 mb-1 input-group-sm">
+              <label className="form-label " name="Enter your Email">
                 Enter your Email
               </label>
               <br />
               <input
-                className="form-control col-form-control-sm"
+                className="form-control"
                 type="text"
                 name="Enter your Email"
               ></input>
             </div>
 
-            <div className="form-group col-lg-6 mb-1">
+            <div className="form-group col-lg-6 col-md-6 mb-1 input-group-sm">
               <label className="form-label" name="Enter your Number">
                 Enter your Number
               </label>
@@ -147,53 +131,108 @@ function App() {
                 pattern={"[0-9]{5}-[0-9]{5}"}
               ></input>
             </div>
-            <div className="form-group col-lg-6 mb-1">
-              <label className="form-label" name="Enter your State">
-                Enter your State
+            <div className="form-group col-lg-6 col-md-6 mb-1 input-group-sm">
+            <label className="form-label" name="Select your state">
+                Select your State
               </label>
-              <br />
-              <StateSelect
-                countryid={101}
-                onChange={(e) => {
-                  setstateid(e.id);
-                }}
-                placeHolder="Select State"
-                className="selectorIn"
-              />
-            </div>
-
-            <div className="form-group col-lg-6 mb-1">
-              <label className="form-label" name="Enter your City">
-                Enter your City
-              </label>
-              <br />
-              <CitySelect
-                countryid={101}
-                stateid={stateid}
-                onChange={(e) => {
-                  console.log(e);
-                }}
-                placeHolder="Select City"
-              />
-            </div>
-            <div className="form-group col-lg-6 mb-1">
-              <label className="form-label">
-                Degree you are looking for *<br />
-              </label>
-              <select className="form-select" name="selecteddegree">
-                <option value="doctorate">Doctorate</option>
-                <option value="post graduation">Post Graduation</option>
-                <option value="graduation">graduation</option>
-                <option value="diploma">Diploma</option>
-                <option value="certificate">Certificate</option>
+              <select
+                className="form-control state"
+                id="state"
+                name="state"
+                required=""
+              >
+                <option value="Andra Pradesh">Andra Pradesh</option>
+                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                <option value="Assam">Assam</option>
+                <option value="Bihar">Bihar</option>
+                <option value="Chhattisgarh">Chhattisgarh</option>
+                <option value="Goa">Goa</option>
+                <option value="Gujarat">Gujarat</option>
+                <option value="Haryana">Haryana</option>
+                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                <option value="Jharkhand">Jharkhand</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Kerala">Kerala</option>
+                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Manipur">Manipur</option>
+                <option value="Meghalaya">Meghalaya</option>
+                <option value="Mizoram">Mizoram</option>
+                <option value="Nagaland">Nagaland</option>
+                <option value="Odisha">Odisha</option>
+                <option value="Punjab">Punjab</option>
+                <option value="Rajasthan">Rajasthan</option>
+                <option value="Sikkim">Sikkim</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <option value="Telangana">Telangana</option>
+                <option value="Tripura">Tripura</option>
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                <option value="Uttarakhand">Uttarakhand</option>
+                <option value="West Bengal">West Bengal</option>
+                <option value="Andaman and Nicobar Islands">
+                  Andaman and Nicobar Islands
+                </option>
+                <option value="Chandigarh">Chandigarh</option>
+                <option value="Dadra Nagar Haveli">Dadra Nagar Haveli</option>
+                <option value="Daman and Diu">Daman and Diu</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Lakshadweep">Lakshadweep</option>
+                <option value="Puducherry">Puducherry</option>
               </select>
             </div>
-
-            <div className="selector">
-              <label className="form-label">
-                Select course *<br />
+            <div className="form-group col-lg-6 col-md-6 mb-1 input-group-sm">
+            <label className="form-label" name="Select your city">
+                Select your City
               </label>
-              <input className="form-control"></input>
+              <select
+                className="form-control city"
+                id="city"
+                name="city"
+                required=""
+              >
+                <option value="">Select City</option>
+              </select>
+            </div>
+            <div className="form-group col-lg-6 col-md-6 mb-1 input-group-sm">
+            <label className="form-label" name="Degree you are looking for">
+                Degree you are looking for
+              </label>
+              <select
+                className="form-control level"
+                id="level"
+                name="level"
+                required=""
+              >
+                <option value="Doctorate">Doctorate</option>
+                <option value="Post Graduate">Post Graduate</option>
+                <option value="Post Graduate Diploma">
+                  Post Graduate Diploma
+                </option>
+                <option value="Graduate">Graduate</option>
+                <option value="Diploma">Diploma</option>
+                <option value="Advance Diploma">Advance Diploma</option>
+                <option value="Management Certification Courses">
+                  Management Certification Courses
+                </option>
+                <option value="Professional Courses">
+                  Professional Courses
+                </option>
+                <option value="Advance Certificate">Advance Certificate</option>
+              </select>
+            </div>
+            <div className="form-group input-group-sm">
+              <label className="form-label" name="Program you are looking for">
+                Program you are looking for
+              </label>
+              <select
+                className="form-control course"
+                id="course"
+                name="course"
+                required=""
+              >
+                <option value="">Select course</option>
+              </select>
             </div>
             <div className="checkbox">
               <input type="checkbox"></input>
@@ -203,11 +242,8 @@ function App() {
                 email.
               </p>
             </div>
-            <div className="modal-footer row">
-              <button
-                type="submit"
-                className="btn btn-primary col-md custom-button"
-              >
+            <div className="">
+              <button type="submit" className="customBtn">
                 Submit
               </button>
             </div>
@@ -273,7 +309,7 @@ function App() {
                     className="programCarousel"
                     responsive={{
                       0: {
-                        items: 1,                       
+                        items: 1,
                         autoplayTimeout: 3000,
                       },
                       770: {
@@ -283,7 +319,7 @@ function App() {
                       1000: {
                         items: 3,
                         autoplayTimeout: 3000,
-                      }
+                      },
                     }}
                   >
                     <div className="testimonial-item text-center mx-3">
@@ -706,7 +742,7 @@ function App() {
                     className="programCarousel"
                     responsive={{
                       0: {
-                        items: 1,                       
+                        items: 1,
                         autoplayTimeout: 3000,
                       },
                       770: {
@@ -716,7 +752,7 @@ function App() {
                       1000: {
                         items: 3,
                         autoplayTimeout: 3000,
-                      }
+                      },
                     }}
                   >
                     <div className="testimonial-item text-center mx-3">
@@ -1753,7 +1789,7 @@ function App() {
                     className="programCarousel"
                     responsive={{
                       0: {
-                        items: 1,                       
+                        items: 1,
                         autoplayTimeout: 3000,
                       },
                       770: {
@@ -1763,7 +1799,7 @@ function App() {
                       1000: {
                         items: 3,
                         autoplayTimeout: 3000,
-                      }
+                      },
                     }}
                   >
                     <div className="testimonial-item text-center mx-3">
@@ -2279,7 +2315,7 @@ function App() {
                     className="programCarousel"
                     responsive={{
                       0: {
-                        items: 1,                       
+                        items: 1,
                         autoplayTimeout: 3000,
                       },
                       770: {
@@ -2289,7 +2325,7 @@ function App() {
                       1000: {
                         items: 3,
                         autoplayTimeout: 3000,
-                      }
+                      },
                     }}
                   >
                     <div className="testimonial-item text-center mx-3">
@@ -2800,7 +2836,7 @@ function App() {
                 <div className="solution_card">
                   <div className="hover_color_bubble"></div>
                   <div className="so_top_icon">
-                  <i className="fa-solid fa-pen-ruler"></i>
+                    <i className="fa-solid fa-pen-ruler"></i>
                   </div>
                   <div className="solu_title">
                     <h3>Study From The Best</h3>
@@ -3176,8 +3212,6 @@ function App() {
           </div>
         </section>
       </div>
-
-      
 
       <footer></footer>
     </div>

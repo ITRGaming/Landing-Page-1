@@ -3,6 +3,11 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+.gridDiv{
+  display: flex;
+  flex-wrap: nowrap;
+}
+
 .topCarousel{
   background: linear-gradient(90deg, transparent, black);
   max-height: 568px !important;
@@ -10,6 +15,22 @@
   overflow: hidden;
 }
 
+.textImg{
+  background-image: url('/src/images/student3.jpg');
+  height: 595px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 60% 20%;
+  margin-right: auto;
+}
+
+.centerImg{
+  background-image: url('/src/images/councelorCalling.jpg');
+  height: 595px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 60% 20%;
+}
 
 .enquiryForm {
   background-color: #28156F;/* #28156F with 50% opacity */
@@ -18,14 +39,12 @@
   border-radius: 10px;
   border: 1px solid #28156F;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  position: absolute;
-  top: 11vh;
-  right: 0vw;
+  position: relative;
   z-index: 1;
   width: 400px;
-  max-height: 568px;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  max-height: 595px;
+  margin-left: auto !important;
+  margin-top: 0px !important;
 }
 
 .enquiryForm * {
@@ -42,6 +61,9 @@
 
 .imp{
   color: #fff;
+  margin-bottom: 0%;
+  font-size: small;
+  text-align: end;
 }
 
 .enquiryForm input::placeholder, .enquiryForm select option, .enquiryForm select {
@@ -52,16 +74,17 @@
 
 .enquiryForm label{
   color: #fff;
+  font-size: small;
 }
 
-.enquiryForm input, .enquiryForm select {
+.enquiryForm input, .enquiryForm select, .customBtn {
   background-color: #fff;
   border: none;
   border-bottom: 2.5px solid #949494 !important;
   padding: 10px;
 }
 
-.enquiryForm input:hover, .enquiryForm select:hover{
+.enquiryForm input:hover, .enquiryForm select:hover, .customBtn:hover{
   background: linear-gradient(90deg, #fff, #dfd7fc);
 }
 
@@ -73,16 +96,9 @@
 }
 
 .enquiryForm button[type="submit"] {
-  background-color: #fff;
-  color: #28156F;
-  border: none;
-  padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
-}
-
-.enquiryForm button[type="submit"]:hover {
-  background-color: #c0c0c5;
+  width: 100%;
 }
 
 .enquiryForm button[type="submit"]:focus {
@@ -312,8 +328,6 @@
 .solution_cards_box .solution_card .so_top_icon {
   width: 60px;
   height: 60px;
-  border-radius: 50%;
-  background: #fff;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -369,6 +383,9 @@
     right: 0px;
     margin-bottom: 5vh;
     overflow: visible;
-    max-height: fit-content;
+    max-height: max-content;
+  }
+  .gridDiv{
+    display: block;
   }
 }
