@@ -1,9 +1,10 @@
 .App{
   position: relative;
   font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
 }
 
-.gridDiv{
+.gridDiv, .gridItem{
   display: flex;
   flex-wrap: nowrap;
 }
@@ -21,7 +22,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 60% 20%;
-  margin-right: auto;
 }
 
 .centerImg{
@@ -43,7 +43,7 @@
   z-index: 1;
   width: 400px;
   max-height: 595px;
-  margin-left: auto !important;
+  margin-left: 0.5vh !important;
   margin-top: 0px !important;
 }
 
@@ -74,7 +74,7 @@
 
 .enquiryForm label{
   color: #fff;
-  font-size: small;
+  font-size: medium;
 }
 
 .enquiryForm input, .enquiryForm select, .customBtn {
@@ -107,9 +107,24 @@
 
 .blueSection{
   background-color: #f0ebff;
+  position: relative;
+  padding-top: 2rem;
+  margin-bottom: 4rem;
+  /* overflow: hidden; */
 }
 
-.impGradeint{
+.bottomCurve::after{
+  content: '';
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  background-color: #f0ebff;
+  border-radius: 0 0 50% 50%;
+  height: 110px; /* Adjust height as needed */
+  width: 100%;
+}
+
+.impGradient{
   background-color: #28156F;
   
   /* Create the gradient. */
@@ -165,14 +180,13 @@
 
 .programCarousel div{
   background-color: transparent !important;
+  padding-bottom: 0 !important;
 }
 
 .img-fluid1{
   height: 400px;
   width: auto !important;
 }
-
-
 
 .img-fluid2{
   max-height: 60px;
@@ -205,6 +219,11 @@
   color: white;
 }
 
+
+.headLineDiv{
+  margin-bottom: 2rem;
+}
+
 .section_our_solution .row {
   align-items: center;
 }
@@ -220,9 +239,9 @@
   justify-content: center;
 }
 .solution_cards_box .solution_card {
-  flex: 0 50%;
+  flex: 1 50%;
   background: #fff;
-  box-shadow: 0 2px 4px 0 rgba(136, 144, 195, 0.2),
+  box-shadow: 0 2px 4px 1px rgba(136, 144, 195, 0.2),
     0 5px 15px 0 rgba(37, 44, 97, 0.15);
   border-radius: 15px;
   margin: 8px;
@@ -235,14 +254,14 @@
 }
 
 .solution_cards_box .solution_card:hover {
-  background: #309df0;
+  background: #696380;
   color: #fff;
-  transform: scale(1.1);
+  transform: scale(1.02);
   z-index: 9;
 }
 
 .solution_cards_box .solution_card:hover::before {
-  background: rgb(85 108 214 / 10%);
+  background:rgb(40, 21, 111, 10%);
 }
 
 .solution_cards_box .solution_card:hover .solu_title h3,
@@ -253,7 +272,7 @@
 .solution_cards_box .solution_card:before {
   content: "";
   position: absolute;
-  background: rgb(85 108 214 / 5%);
+  background: rgb(40, 21, 111, 0.05%);
   width: 170px;
   height: 400px;
   z-index: -1;
@@ -263,12 +282,11 @@
   border-radius: 35px;
 }
 
-.solution_cards_box .solution_card:hover .solu_description button {
-  background: #fff !important;
-  color: #309df0;
-}
 
-.solution_card .so_top_icon {
+.solution_card .solu_title {
+  display: flex;
+  justify-content: center;
+  align-items: center
 }
 
 .solution_card .solu_title h3 {
@@ -276,6 +294,7 @@
   font-size: 1.3rem;
   margin-top: 13px;
   margin-bottom: 13px;
+  margin-left: 5px;
 }
 
 .solution_card .solu_description p {
@@ -283,32 +302,16 @@
   margin-bottom: 15px;
 }
 
-.solution_card .solu_description button {
-  border: 0;
-  border-radius: 15px;
-  background: linear-gradient(
-    140deg,
-    #42c3ca 0%,
-    #42c3ca 50%,
-    #42c3cac7 75%
-  ) !important;
-  color: #fff;
-  font-weight: 500;
-  font-size: 1rem;
-  padding: 5px 16px;
-}
-
 .our_solution_content h1 {
   text-transform: capitalize;
   margin-bottom: 1rem;
   font-size: 2.5rem;
 }
-.our_solution_content p {
-}
+
 
 .hover_color_bubble {
   position: absolute;
-  background: rgb(54 81 207 / 15%);
+  background: rgb(40 21 111 / 15%);
   width: 100rem;
   height: 100rem;
   left: 0;
@@ -316,7 +319,7 @@
   z-index: -1;
   top: 16rem;
   border-radius: 50%;
-  transform: rotate(-36deg);
+  /* transform: rotate(-36deg); */
   left: -18rem;
   transition: 0.7s;
 }
@@ -325,23 +328,80 @@
   top: 0rem;
 }
 
-.solution_cards_box .solution_card .so_top_icon {
-  width: 60px;
-  height: 60px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* .stats{
+  width: 60%;
+  margin: 0 auto !important;
+  border: 1px solid #28156F;
+  background: linear-gradient(45deg, #28156F 1%, #f0ebff);
+  border-radius: 18px;
+} */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Adjust column count as needed */
+  grid-gap: 1rem;
+  width: 80%; /* Adjust width as needed */
+  margin: 4rem auto 2rem !important;
+  border: 1px solid #28156F;
+  background: linear-gradient(90deg, transparent , #f0ebff 90%); 
+  border-radius: 18px;
+  padding: 2px;
+  /* margin-top: 4rem !important; */
 }
 
-.solution_cards_box .solution_card .so_top_icon img {
-  width: 40px;
-  height: 50px;
-  object-fit: contain;
+.seperationLine {
+  /* Style your separation line here */
+  position: relative;
+  padding: 2px;
+}
+
+.styleLine p, .styleLine h2 {
+  margin: 0 !important;
+}
+
+.styleLine h2{
+  font-weight: bold;
+}
+
+.seperationLine::after {
+  content: '';
+  position: absolute;
+  top: 25%;
+  right: 0;
+  width: 1px;
+  height: 50%;
+  background-color: #28156F;
+}
+
+@media (max-width: 768px) {
+  .stats {
+    grid-template-columns: repeat(4, 1fr); /* Adjust column count for smaller screens */
+  }
+
+  .stats .text-center h2 {
+    font-size: medium;
+  }
+  
+  .stats .text-center p {
+    font-size: x-small;
+  }
+
+}
+
+.padding-50px-tb {
+  padding-top: 30px;
+  padding-bottom: 27px;
+}
+.bg-dark-footer {
+  background-color: #28156F;
+}
+.textFooter {
+  text-align: center !important;
+  color: #fff;
 }
   
 /*start media query*/
-@media screen and (min-width: 320px) {
+@media screen and (min-width: 878px) {
   .sol_card_top_3 {
     position: relative;
     top: 0;
@@ -355,7 +415,7 @@
     flex: auto;
   }
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 861px) {
   .our_solution_category .solution_cards_box {
     flex: 1;
   }
@@ -363,15 +423,32 @@
 @media only screen and (min-width: 1024px) {
   .sol_card_top_3 {
     position: relative;
-    top: -3rem;
   }
   .our_solution_category {
-    width: 50%;
+    width: 90%;
     margin: 0 auto;
   }
 }
 
-@media (max-width: 855px) {
+@media (max-width:992px) {
+  .gridDiv{
+    display: block;
+    --bs-gutter-x:0rem;
+    padding-right: 0px;
+  }
+  .enquiryForm{
+    position: relative;
+    top: 3vh;
+    max-width: 400px;
+    width: 90%;
+    z-index: 0;
+    margin: 0 auto 6vh auto !important;
+    overflow: visible;
+    max-height: max-content;
+  }
+}
+
+@media (max-width: 767px) {
   .enquiryForm{
     position: relative;
     top: 3vh;
@@ -386,6 +463,9 @@
     max-height: max-content;
   }
   .gridDiv{
+    display: block;
+  }
+  .gridItem{
     display: block;
   }
 }

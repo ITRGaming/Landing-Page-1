@@ -77,17 +77,19 @@ function App() {
 
   return (
     <div className="App">
-      <nav className="navbar navbar-light">
+      <nav className="navbar">
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
             <img src={logoNav} alt="" height="60" />
           </a>
         </div>
       </nav>
-      <div className="row col-12 me-1 ">
+      <div className="">
         <div className="gridDiv">
-          <div className="col-4 textImg"></div>
-          <div className="col-5 centerImg"></div>
+          <div className="gridItem col-lg-9">
+            <div className="col-lg-5 col-md-4 textImg"></div>
+            <div className="col-lg-9 col-md-9 centerImg"></div>
+          </div>
           <form className="g-3 row enquiryForm">
             <div className="header">
               <h3 className="title">Enquire Now</h3>
@@ -97,43 +99,46 @@ function App() {
               </i> */}
             </div>
             <div className="form-group col-lg-6 col-md-6 mb-1 input-group-sm">
-              <label className="form-label " name="Enter your Name">
-                Enter your Name
+              <label className="form-label " name="name">
+                Name:
               </label>
               <br />
               <input
                 className="form-control "
                 type="text"
-                name="Enter your Name"
+                name="name"
+                placeholder="Name"
               ></input>
             </div>
             <div className="form-group col-lg-6 col-md-6 mb-1 input-group-sm">
-              <label className="form-label " name="Enter your Email">
-                Enter your Email
+              <label className="form-label " name="email">
+                Email:
               </label>
               <br />
               <input
                 className="form-control"
                 type="text"
-                name="Enter your Email"
+                name="email"
+                placeholder="Email"
               ></input>
             </div>
 
             <div className="form-group col-lg-6 col-md-6 mb-1 input-group-sm">
-              <label className="form-label" name="Enter your Number">
-                Enter your Number
+              <label className="form-label" name="number">
+                Number:
               </label>
               <br />
               <input
                 className="form-control"
                 type="tel"
-                name="Enter your Number"
+                name="number"
                 pattern={"[0-9]{5}-[0-9]{5}"}
+                placeholder="Number"
               ></input>
             </div>
             <div className="form-group col-lg-6 col-md-6 mb-1 input-group-sm">
-            <label className="form-label" name="Select your state">
-                Select your State
+              <label className="form-label" name="state">
+                State:
               </label>
               <select
                 className="form-control state"
@@ -182,8 +187,8 @@ function App() {
               </select>
             </div>
             <div className="form-group col-lg-6 col-md-6 mb-1 input-group-sm">
-            <label className="form-label" name="Select your city">
-                Select your City
+              <label className="form-label" name="city">
+                City:
               </label>
               <select
                 className="form-control city"
@@ -195,8 +200,8 @@ function App() {
               </select>
             </div>
             <div className="form-group col-lg-6 col-md-6 mb-1 input-group-sm">
-            <label className="form-label" name="Degree you are looking for">
-                Degree you are looking for
+              <label className="form-label" name="degree">
+                Degree:
               </label>
               <select
                 className="form-control level"
@@ -222,8 +227,8 @@ function App() {
               </select>
             </div>
             <div className="form-group input-group-sm">
-              <label className="form-label" name="Program you are looking for">
-                Program you are looking for
+              <label className="form-label" name="program">
+                Program:
               </label>
               <select
                 className="form-control course"
@@ -251,14 +256,14 @@ function App() {
         </div>
       </div>
 
-      <div className="blueSection">
+      <div className="blueSection bottomCurve">
         <section id="programmes">
-          <div className="container py-5 wow fadeInUp" data-wow-delay="0.1s">
+          <div className="container wow fadeInUp" data-wow-delay="0.1s">
             <div className="text-center">
               <h1 className="heading">
-                <span className="impGradeint">Our Future-ready</span> Programmes
+                <span className="impGradient">Our Future-ready</span> Programmes
               </h1>
-              <h6 className="subTitle text-center px-3">
+              <h6 className="subTitle px-3">
                 Preparing you for the challenges of tomorrow
               </h6>
             </div>
@@ -2829,16 +2834,23 @@ function App() {
       </div>
 
       <div className="section_our_solution">
-        <div className="row">
+        <div className="text-center headLineDiv">
+          <h1 className="heading">
+            <span className="impGradient">Our Commitment</span> to{" "}
+            <span className="impGradient">Your Success</span>{" "}
+          </h1>
+          <h6 className="subTitle px-3">
+            Preparing You for a Brighter Future
+          </h6>
+        </div>
+        <div className="row cardRow">
           <div className="col-lg-12 col-md-12 col-sm-12">
             <div className="our_solution_category">
               <div className="solution_cards_box sol_card_top_3">
                 <div className="solution_card">
                   <div className="hover_color_bubble"></div>
-                  <div className="so_top_icon">
-                    <i className="fa-solid fa-pen-ruler"></i>
-                  </div>
                   <div className="solu_title">
+                    <i className="fa-solid fa-pen-ruler"></i>
                     <h3>Study From The Best</h3>
                   </div>
                   <div className="solu_description">
@@ -2855,8 +2867,8 @@ function App() {
               <div className="solution_cards_box sol_card_top_3">
                 <div className="solution_card">
                   <div className="hover_color_bubble"></div>
-                  <div className="so_top_icon"></div>
                   <div className="solu_title">
+                    <i className="fa-solid fa-layer-group"></i>
                     <h3>Career Developement</h3>
                   </div>
                   <div className="solu_description">
@@ -2874,8 +2886,8 @@ function App() {
               <div className="solution_cards_box sol_card_top_3">
                 <div className="solution_card">
                   <div className="hover_color_bubble"></div>
-                  <div className="so_top_icon"></div>
                   <div className="solu_title">
+                    <i className="fa-solid fa-pen-ruler"></i>
                     <h3>Online Learning</h3>
                   </div>
                   <div className="solu_description">
@@ -2893,8 +2905,8 @@ function App() {
               <div className="solution_cards_box sol_card_top_3">
                 <div className="solution_card">
                   <div className="hover_color_bubble"></div>
-                  <div className="so_top_icon"></div>
                   <div className="solu_title">
+                    <i className="fa-solid fa-layer-group"></i>
                     <h3>Coaching</h3>
                   </div>
                   <div className="solu_description">
@@ -2916,15 +2928,39 @@ function App() {
       </div>
 
       <div className="">
+        <section id="statistics">
+          <div className="stats">
+            <div className="styleLine seperationLine text-center">
+              <h2>4650</h2>
+              <p>Happy Students</p>
+            </div>
+            {/* <div className=" seperationLine"></div> */}
+            <div className="styleLine seperationLine text-center">
+              <h2>3790</h2>
+              <p>Centres Across India</p>
+            </div>
+            {/* <div className=" seperationLine"></div> */}
+            <div className="styleLine seperationLine text-center">
+              <h2>5580</h2>
+              <p>Academic Partners</p>
+            </div>
+            {/* <div className=" seperationLine"></div> */}
+            <div className="styleLine text-center">
+              <h2>8580</h2>
+              <p>Telephonic Talk</p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div className="">
         <section id="alumni">
           <div className="container py-5">
             <div className="text-center wow fadeInUp" data-wow-delay="0.1s">
               <h1 className="heading">
-                <span className="impGradeint">Working</span> At
+                <span className="impGradient">Working</span> At
               </h1>
-              <h6 className="section-title bg-white text-center text-primary px-3">
-                Our Alumni
-              </h6>
+              <h6 className="subTitle text-center px-3">Our Alumni</h6>
             </div>
             <div className="row g-4 alumni-carousel">
               <OwlCarousel
@@ -3213,7 +3249,20 @@ function App() {
         </section>
       </div>
 
-      <footer></footer>
+      <footer
+        className="footer-standard-dark bg-extra-dark-gray"
+        style={{ marginTop: "30px" }}
+      >
+        <div className="bg-dark-footer padding-50px-tb text-center">
+          <div className="container">
+            <div className="">
+              <div className="textFooter">
+                © 2023 ISBM University, All Right Reserved.
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
