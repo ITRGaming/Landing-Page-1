@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
@@ -9,8 +9,7 @@ import "owl.carousel/dist/assets/owl.theme.default.min.css";
 import "react-country-state-city/dist/react-country-state-city.css";
 // import { FontAwesomeIcon } from 'react-fontawesome';
 import logoNav from "./images/logo-nav.png";
-// import sliderImg from "./images/councelorCalling.jpg";
-// import sliderImg2 from "./images/student3.jpg";
+import overview from "./images/overview.jpg";
 import course1 from "../src/images/course/1.jpg";
 import course2 from "../src/images/course/2.jpg";
 import course3 from "../src/images/course/3.jpg";
@@ -74,6 +73,7 @@ function App() {
     setActiveTab(tabId);
     // displayProgramme(activeTab);
   };
+
 
   return (
     <div className="App">
@@ -2839,9 +2839,7 @@ function App() {
             <span className="impGradient">Our Commitment</span> to{" "}
             <span className="impGradient">Your Success</span>{" "}
           </h1>
-          <h6 className="subTitle px-3">
-            Preparing You for a Brighter Future
-          </h6>
+          <h6 className="subTitle px-3">Preparing You for a Brighter Future</h6>
         </div>
         <div className="row cardRow">
           <div className="col-lg-12 col-md-12 col-sm-12">
@@ -2953,6 +2951,40 @@ function App() {
         </section>
       </div>
 
+      <div className="overviewDiv">
+        <section id="overview">
+          <div className="container">
+            <div className="text-center headLineDiv">
+              <h1 className="heading">
+                <span className="impGradient">Overview</span>
+              </h1>
+              <br />
+            </div>
+            <div className="row overviewRow">
+              <div className="col-lg-5">
+                <img src={overview} alt="overview" className="overviewImg" />
+              </div>
+              <div className="col-lg-5">
+                <p className="overviewPara">
+                  We believe we are learning, evolving, and transforming every
+                  day through fast-track minimal duration correspondence
+                  courses. These programs have so many relevant concepts and
+                  case studies meant to provide skills, vision, and sources for
+                  students to get broaden their horizons of business and
+                  management field. These kinds of exposure help students to get
+                  an accurate view of the field they'll be entering. <br />
+                            <br />
+                  ISTM is meant for career-oriented business and management
+                  students, programs are meant for students to get qualified
+                  minus any kind of interruption in their career and
+                  professional life. Such students can join the adjustable
+                  short-time management courses.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
       <div className="">
         <section id="alumni">
           <div className="container py-5">
@@ -2960,9 +2992,9 @@ function App() {
               <h1 className="heading">
                 <span className="impGradient">Working</span> At
               </h1>
-              <h6 className="subTitle text-center px-3">Our Alumni</h6>
+              <h6 className="subTitle text-center px-3 mb-5">Our Alumni</h6>
             </div>
-            <div className="row g-4 alumni-carousel">
+            <div className="row g-4 alumni-carousel mb-4">
               <OwlCarousel
                 loop
                 responsive={{
@@ -3248,15 +3280,15 @@ function App() {
           </div>
         </section>
       </div>
-
+    
+      </div>
       <footer
         className="footer-standard-dark bg-extra-dark-gray"
-        style={{ marginTop: "30px" }}
       >
-        <div className="bg-dark-footer padding-50px-tb text-center">
+        <div className="footerBox padding-50px-tb ">
           <div className="container">
             <div className="">
-              <div className="textFooter">
+              <div className="textFooter text-center">
                 © 2023 ISBM University, All Right Reserved.
               </div>
             </div>
