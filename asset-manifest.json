@@ -1,10 +1,11 @@
 {
   "files": {
-    "main.css": "/Landing-Page-1/static/css/main.6c1bb27c.css",
-    "main.js": "/Landing-Page-1/static/js/main.7d12e981.js",
+    "main.css": "/Landing-Page-1/static/css/main.ce2b9a8e.css",
+    "main.js": "/Landing-Page-1/static/js/main.31f38a2e.js",
     "static/js/453.4087adc7.chunk.js": "/Landing-Page-1/static/js/453.4087adc7.chunk.js",
     "static/media/student3.jpg": "/Landing-Page-1/static/media/student3.d28291957ea3ea823805.jpg",
     "static/media/councelorCalling.jpg": "/Landing-Page-1/static/media/councelorCalling.2fb359831c9f1ea71f17.jpg",
+    "static/media/overview2.jpg": "/Landing-Page-1/static/media/overview2.7e0bd86195b6904f0abd.jpg",
     "static/media/26.jpg": "/Landing-Page-1/static/media/26.d072f99743b4d51ed9c2.jpg",
     "static/media/TwemojiMozilla.ttf": "/Landing-Page-1/static/media/TwemojiMozilla.c993f93bd40b647e0b38.ttf",
     "static/media/27.jpg": "/Landing-Page-1/static/media/27.7bc3b4b6ab4e392e5942.jpg",
@@ -13,7 +14,6 @@
     "static/media/28.jpg": "/Landing-Page-1/static/media/28.8a92f638f697c927c5e8.jpg",
     "static/media/24.jpg": "/Landing-Page-1/static/media/24.52f1be6189607f9562fa.jpg",
     "static/media/5.jpg": "/Landing-Page-1/static/media/5.b0b3dd5dd7afe5ba04fa.jpg",
-    "static/media/overview.jpg": "/Landing-Page-1/static/media/overview.491cb781907453965ad0.jpg",
     "static/media/2.jpg": "/Landing-Page-1/static/media/2.c5c30908bea83b00d873.jpg",
     "static/media/16.jpg": "/Landing-Page-1/static/media/16.a8e15129eb7b53d3af76.jpg",
     "static/media/10.jpg": "/Landing-Page-1/static/media/10.d37a580680ad01124bb9.jpg",
@@ -48,12 +48,12 @@
     "static/media/New1.png": "/Landing-Page-1/static/media/New1.74964c7c7492a53c93be.png",
     "static/media/stacked-waves-haikei.svg": "/Landing-Page-1/static/media/stacked-waves-haikei.9e0432e61506e16814df.svg",
     "index.html": "/Landing-Page-1/index.html",
-    "main.6c1bb27c.css.map": "/Landing-Page-1/static/css/main.6c1bb27c.css.map",
-    "main.7d12e981.js.map": "/Landing-Page-1/static/js/main.7d12e981.js.map",
+    "main.ce2b9a8e.css.map": "/Landing-Page-1/static/css/main.ce2b9a8e.css.map",
+    "main.31f38a2e.js.map": "/Landing-Page-1/static/js/main.31f38a2e.js.map",
     "453.4087adc7.chunk.js.map": "/Landing-Page-1/static/js/453.4087adc7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6c1bb27c.css",
-    "static/js/main.7d12e981.js"
+    "static/css/main.ce2b9a8e.css",
+    "static/js/main.31f38a2e.js"
   ]
 }
