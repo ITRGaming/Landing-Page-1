@@ -51,6 +51,10 @@
   margin-top: 0px !important;
 }
 
+.header{
+  margin: 5px 5px 0px 5px !important;
+}
+
 .title{
   color: #fff;
   font-family: 'Montserrat', sans-serif; /* Replace with your preferred font */
@@ -59,11 +63,15 @@
   letter-spacing: 2px;
 }
 
+.checkbox{
+  display: flex;
+}
+
 .imp{
   color: #fff;
   margin-bottom: 0%;
   font-size: small;
-  text-align: end;
+  text-align: center;
 }
 
 .enquiryForm input::placeholder, .enquiryForm select option, .enquiryForm select {
@@ -104,6 +112,7 @@
 .enquiryForm button[type="submit"]:focus {
   box-shadow: 2px 2px 10px #fff;
 }
+
 
 .blueSection{
   background-color: #f0ebff;

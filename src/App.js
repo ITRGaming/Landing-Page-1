@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.min.css";
 import "owl.carousel/dist/assets/owl.theme.default.min.css";
+import {
+  GetState,
+  GetCity
+} from "react-country-state-city";
+
 // import { CitySelect, StateSelect } from "react-country-state-city";
 import "react-country-state-city/dist/react-country-state-city.css";
 // import { FontAwesomeIcon } from 'react-fontawesome';
 import logoNav from "./images/logo-nav.png";
-import overview from "./images/overview.jpg";
+import overview from "./images/overview2.jpg";
 import course1 from "../src/images/course/1.jpg";
 import course2 from "../src/images/course/2.jpg";
 import course3 from "../src/images/course/3.jpg";
@@ -66,8 +71,16 @@ import alumni16 from "../src/images/alumni/New16.jpg";
 import alumni17 from "../src/images/alumni/New17.jpg";
 
 function App() {
-  // const [stateid, setstateid] = useState(0);
+  const [cityid, setCityid] = useState(0);
+  const [stateList, setStateList] = useState([]);
+  const [cityList, setCityList] = useState([]);
   const [activeTab, setActiveTab] = useState("PHD");
+
+  useEffect(()=> {
+    GetState(101).then((result) => {
+      setStateList(result);
+    });
+  })
 
   const handleClick = (tabId) => {
     setActiveTab(tabId);
@@ -141,49 +154,22 @@ function App() {
                 State:
               </label>
               <select
-                className="form-control state"
-                id="state"
-                name="state"
-                required=""
+                className="form-control level"
+                onChange={(e) => {
+                  const state = stateList[e.target.value]; //here you will get full state object.
+                  // setStateid(state.id);
+                 
+        
+                  GetCity(101, state.id).then((result) => {
+                    setCityList(result);
+                  });
+                }}
               >
-                <option value="Andra Pradesh">Andra Pradesh</option>
-                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                <option value="Assam">Assam</option>
-                <option value="Bihar">Bihar</option>
-                <option value="Chhattisgarh">Chhattisgarh</option>
-                <option value="Goa">Goa</option>
-                <option value="Gujarat">Gujarat</option>
-                <option value="Haryana">Haryana</option>
-                <option value="Himachal Pradesh">Himachal Pradesh</option>
-                <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-                <option value="Jharkhand">Jharkhand</option>
-                <option value="Karnataka">Karnataka</option>
-                <option value="Kerala">Kerala</option>
-                <option value="Madhya Pradesh">Madhya Pradesh</option>
-                <option value="Maharashtra">Maharashtra</option>
-                <option value="Manipur">Manipur</option>
-                <option value="Meghalaya">Meghalaya</option>
-                <option value="Mizoram">Mizoram</option>
-                <option value="Nagaland">Nagaland</option>
-                <option value="Odisha">Odisha</option>
-                <option value="Punjab">Punjab</option>
-                <option value="Rajasthan">Rajasthan</option>
-                <option value="Sikkim">Sikkim</option>
-                <option value="Tamil Nadu">Tamil Nadu</option>
-                <option value="Telangana">Telangana</option>
-                <option value="Tripura">Tripura</option>
-                <option value="Uttar Pradesh">Uttar Pradesh</option>
-                <option value="Uttarakhand">Uttarakhand</option>
-                <option value="West Bengal">West Bengal</option>
-                <option value="Andaman and Nicobar Islands">
-                  Andaman and Nicobar Islands
-                </option>
-                <option value="Chandigarh">Chandigarh</option>
-                <option value="Dadra Nagar Haveli">Dadra Nagar Haveli</option>
-                <option value="Daman and Diu">Daman and Diu</option>
-                <option value="Delhi">Delhi</option>
-                <option value="Lakshadweep">Lakshadweep</option>
-                <option value="Puducherry">Puducherry</option>
+                 {stateList.map((item, index) => (
+                    <option key={index} value={index}>
+                      {item.name}
+                    </option>
+                  ))}
               </select>
             </div>
             <div className="form-group col-lg-6 col-md-6 mb-1 input-group-sm">
@@ -191,12 +177,17 @@ function App() {
                 City:
               </label>
               <select
-                className="form-control city"
-                id="city"
-                name="city"
-                required=""
+                className="form-control level"
+                onChange={(e) => {
+                  const city = cityList[e.target.value]; //here you will get full city object.
+                  setCityid(city.id);
+                }}
               >
-                <option value="">Select City</option>
+                {cityList.map((item, index) => (
+                  <option key={index} value={index}>
+                    {item.name}
+                  </option>
+                ))}
               </select>
             </div>
             <div className="form-group col-lg-6 col-md-6 mb-1 input-group-sm">
@@ -2944,8 +2935,8 @@ function App() {
             </div>
             {/* <div className=" seperationLine"></div> */}
             <div className="styleLine text-center">
-              <h2>8580</h2>
-              <p>Telephonic Talk</p>
+              <h2>18+</h2>
+              <p>Years of Industry Presence</p>
             </div>
           </div>
         </section>
@@ -2973,7 +2964,7 @@ function App() {
                   students to get broaden their horizons of business and
                   management field. These kinds of exposure help students to get
                   an accurate view of the field they'll be entering. <br />
-                            <br />
+                  <br />
                   ISTM is meant for career-oriented business and management
                   students, programs are meant for students to get qualified
                   minus any kind of interruption in their career and
@@ -2985,311 +2976,308 @@ function App() {
           </div>
         </section>
 
-      <div className="">
-        <section id="alumni">
-          <div className="container py-5">
-            <div className="text-center wow fadeInUp" data-wow-delay="0.1s">
-              <h1 className="heading">
-                <span className="impGradient">Working</span> At
-              </h1>
-              <h6 className="subTitle text-center px-3 mb-5">Our Alumni</h6>
+        <div className="">
+          <section id="alumni">
+            <div className="container py-5">
+              <div className="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h1 className="heading">
+                  <span className="impGradient">Working</span> At
+                </h1>
+                <h6 className="subTitle text-center px-3 mb-5">Our Alumni</h6>
+              </div>
+              <div className="row g-4 alumni-carousel mb-4">
+                <OwlCarousel
+                  loop
+                  responsive={{
+                    0: {
+                      items: 4,
+                      autoplay: true,
+                      autoplayTimeout: 5000,
+                    },
+                    // 450: {
+                    //   items: 4,
+                    //   autoplay: true,
+                    //   autoplayTimeout: 5000,
+                    // },
+                    1000: {
+                      items: 4,
+                      autoplay: true,
+                      autoplayTimeout: 5000,
+                    },
+                    1200: {
+                      items: 8,
+                      autoplay: true,
+                      autoplayTimeout: 5000,
+                    },
+                  }}
+                >
+                  <div
+                    className="testimonial-item text-center mx-3 wow fadeInUp"
+                    data-wow-delay="0.1s"
+                  >
+                    <div className="team-item">
+                      <div className="overflow-hidden">
+                        <img
+                          className="img-fluid2"
+                          src={alumni1}
+                          loading="lazy"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="testimonial-item text-center mx-3 wow fadeInUp"
+                    data-wow-delay="0.3s"
+                  >
+                    <div className="team-item">
+                      <div className="overflow-hidden">
+                        <img
+                          className="img-fluid2"
+                          src={alumni2}
+                          loading="lazy"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="testimonial-item text-center mx-3 wow fadeInUp"
+                    data-wow-delay="0.5s"
+                  >
+                    <div className="team-item">
+                      <div className="overflow-hidden">
+                        <img
+                          className="img-fluid2"
+                          src={alumni3}
+                          loading="lazy"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="testimonial-item text-center mx-3 wow fadeInUp"
+                    data-wow-delay="0.7s"
+                  >
+                    <div className="team-item">
+                      <div className="overflow-hidden">
+                        <img
+                          className="img-fluid2"
+                          src={alumni4}
+                          loading="lazy"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="testimonial-item text-center mx-3 wow fadeInUp"
+                    data-wow-delay="0.1s"
+                  >
+                    <div className="team-item">
+                      <div className="overflow-hidden">
+                        <img
+                          className="img-fluid2"
+                          src={alumni5}
+                          loading="lazy"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="testimonial-item text-center mx-3 wow fadeInUp"
+                    data-wow-delay="0.3s"
+                  >
+                    <div className="team-item">
+                      <div className="overflow-hidden">
+                        <img
+                          className="img-fluid2"
+                          src={alumni6}
+                          loading="lazy"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="testimonial-item text-center mx-3 wow fadeInUp"
+                    data-wow-delay="0.5s"
+                  >
+                    <div className="team-item">
+                      <div className="overflow-hidden">
+                        <img
+                          className="img-fluid2"
+                          src={alumni7}
+                          loading="lazy"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="testimonial-item text-center mx-3 wow fadeInUp"
+                    data-wow-delay="0.7s"
+                  >
+                    <div className="team-item">
+                      <div className="overflow-hidden">
+                        <img
+                          className="img-fluid2"
+                          src={alumni8}
+                          loading="lazy"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="testimonial-item text-center mx-3 wow fadeInUp"
+                    data-wow-delay="0.1s"
+                  >
+                    <div className="team-item">
+                      <div className="overflow-hidden">
+                        <img
+                          className="img-fluid2"
+                          src={alumni9}
+                          loading="lazy"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="testimonial-item text-center mx-3 wow fadeInUp"
+                    data-wow-delay="0.3s"
+                  >
+                    <div className="team-item">
+                      <div className="overflow-hidden">
+                        <img
+                          className="img-fluid2"
+                          src={alumni10}
+                          loading="lazy"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="testimonial-item text-center mx-3 wow fadeInUp"
+                    data-wow-delay="0.5s"
+                  >
+                    <div className="team-item">
+                      <div className="overflow-hidden">
+                        <img
+                          className="img-fluid2"
+                          src={alumni11}
+                          loading="lazy"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="testimonial-item text-center mx-3 wow fadeInUp"
+                    data-wow-delay="0.7s"
+                  >
+                    <div className="team-item">
+                      <div className="overflow-hidden">
+                        <img
+                          className="img-fluid2"
+                          src={alumni12}
+                          loading="lazy"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="testimonial-item text-center mx-3 wow fadeInUp"
+                    data-wow-delay="0.1s"
+                  >
+                    <div className="team-item">
+                      <div className="overflow-hidden">
+                        <img
+                          className="img-fluid2"
+                          src={alumni13}
+                          loading="lazy"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="testimonial-item text-center mx-3 wow fadeInUp"
+                    data-wow-delay="0.3s"
+                  >
+                    <div className="team-item">
+                      <div className="overflow-hidden">
+                        <img
+                          className="img-fluid2"
+                          src={alumni14}
+                          loading="lazy"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="testimonial-item text-center mx-3 wow fadeInUp"
+                    data-wow-delay="0.5s"
+                  >
+                    <div className="team-item">
+                      <div className="overflow-hidden">
+                        <img
+                          className="img-fluid2"
+                          src={alumni15}
+                          loading="lazy"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="testimonial-item text-center mx-3 wow fadeInUp"
+                    data-wow-delay="0.7s"
+                  >
+                    <div className="team-item">
+                      <div className="overflow-hidden">
+                        <img
+                          className="img-fluid2"
+                          src={alumni16}
+                          loading="lazy"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="testimonial-item text-center mx-3 wow fadeInUp"
+                    data-wow-delay="0.7s"
+                  >
+                    <div className="team-item">
+                      <div className="overflow-hidden">
+                        <img
+                          className="img-fluid2"
+                          src={alumni17}
+                          loading="lazy"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </OwlCarousel>
+              </div>
             </div>
-            <div className="row g-4 alumni-carousel mb-4">
-              <OwlCarousel
-                loop
-                responsive={{
-                  0: {
-                    items: 4,
-                    autoplay: true,
-                    autoplayTimeout: 5000,
-                  },
-                  // 450: {
-                  //   items: 4,
-                  //   autoplay: true,
-                  //   autoplayTimeout: 5000,
-                  // },
-                  1000: {
-                    items: 4,
-                    autoplay: true,
-                    autoplayTimeout: 5000,
-                  },
-                  1200: {
-                    items: 8,
-                    autoplay: true,
-                    autoplayTimeout: 5000,
-                  },
-                }}
-              >
-                <div
-                  className="testimonial-item text-center mx-3 wow fadeInUp"
-                  data-wow-delay="0.1s"
-                >
-                  <div className="team-item">
-                    <div className="overflow-hidden">
-                      <img
-                        className="img-fluid2"
-                        src={alumni1}
-                        loading="lazy"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="testimonial-item text-center mx-3 wow fadeInUp"
-                  data-wow-delay="0.3s"
-                >
-                  <div className="team-item">
-                    <div className="overflow-hidden">
-                      <img
-                        className="img-fluid2"
-                        src={alumni2}
-                        loading="lazy"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="testimonial-item text-center mx-3 wow fadeInUp"
-                  data-wow-delay="0.5s"
-                >
-                  <div className="team-item">
-                    <div className="overflow-hidden">
-                      <img
-                        className="img-fluid2"
-                        src={alumni3}
-                        loading="lazy"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="testimonial-item text-center mx-3 wow fadeInUp"
-                  data-wow-delay="0.7s"
-                >
-                  <div className="team-item">
-                    <div className="overflow-hidden">
-                      <img
-                        className="img-fluid2"
-                        src={alumni4}
-                        loading="lazy"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="testimonial-item text-center mx-3 wow fadeInUp"
-                  data-wow-delay="0.1s"
-                >
-                  <div className="team-item">
-                    <div className="overflow-hidden">
-                      <img
-                        className="img-fluid2"
-                        src={alumni5}
-                        loading="lazy"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="testimonial-item text-center mx-3 wow fadeInUp"
-                  data-wow-delay="0.3s"
-                >
-                  <div className="team-item">
-                    <div className="overflow-hidden">
-                      <img
-                        className="img-fluid2"
-                        src={alumni6}
-                        loading="lazy"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="testimonial-item text-center mx-3 wow fadeInUp"
-                  data-wow-delay="0.5s"
-                >
-                  <div className="team-item">
-                    <div className="overflow-hidden">
-                      <img
-                        className="img-fluid2"
-                        src={alumni7}
-                        loading="lazy"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="testimonial-item text-center mx-3 wow fadeInUp"
-                  data-wow-delay="0.7s"
-                >
-                  <div className="team-item">
-                    <div className="overflow-hidden">
-                      <img
-                        className="img-fluid2"
-                        src={alumni8}
-                        loading="lazy"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="testimonial-item text-center mx-3 wow fadeInUp"
-                  data-wow-delay="0.1s"
-                >
-                  <div className="team-item">
-                    <div className="overflow-hidden">
-                      <img
-                        className="img-fluid2"
-                        src={alumni9}
-                        loading="lazy"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="testimonial-item text-center mx-3 wow fadeInUp"
-                  data-wow-delay="0.3s"
-                >
-                  <div className="team-item">
-                    <div className="overflow-hidden">
-                      <img
-                        className="img-fluid2"
-                        src={alumni10}
-                        loading="lazy"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="testimonial-item text-center mx-3 wow fadeInUp"
-                  data-wow-delay="0.5s"
-                >
-                  <div className="team-item">
-                    <div className="overflow-hidden">
-                      <img
-                        className="img-fluid2"
-                        src={alumni11}
-                        loading="lazy"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="testimonial-item text-center mx-3 wow fadeInUp"
-                  data-wow-delay="0.7s"
-                >
-                  <div className="team-item">
-                    <div className="overflow-hidden">
-                      <img
-                        className="img-fluid2"
-                        src={alumni12}
-                        loading="lazy"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="testimonial-item text-center mx-3 wow fadeInUp"
-                  data-wow-delay="0.1s"
-                >
-                  <div className="team-item">
-                    <div className="overflow-hidden">
-                      <img
-                        className="img-fluid2"
-                        src={alumni13}
-                        loading="lazy"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="testimonial-item text-center mx-3 wow fadeInUp"
-                  data-wow-delay="0.3s"
-                >
-                  <div className="team-item">
-                    <div className="overflow-hidden">
-                      <img
-                        className="img-fluid2"
-                        src={alumni14}
-                        loading="lazy"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="testimonial-item text-center mx-3 wow fadeInUp"
-                  data-wow-delay="0.5s"
-                >
-                  <div className="team-item">
-                    <div className="overflow-hidden">
-                      <img
-                        className="img-fluid2"
-                        src={alumni15}
-                        loading="lazy"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="testimonial-item text-center mx-3 wow fadeInUp"
-                  data-wow-delay="0.7s"
-                >
-                  <div className="team-item">
-                    <div className="overflow-hidden">
-                      <img
-                        className="img-fluid2"
-                        src={alumni16}
-                        loading="lazy"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="testimonial-item text-center mx-3 wow fadeInUp"
-                  data-wow-delay="0.7s"
-                >
-                  <div className="team-item">
-                    <div className="overflow-hidden">
-                      <img
-                        className="img-fluid2"
-                        src={alumni17}
-                        loading="lazy"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                </div>
-              </OwlCarousel>
-            </div>
-          </div>
-        </section>
+          </section>
+        </div>
       </div>
-    
-      </div>
-      <footer
-        className="footer-standard-dark bg-extra-dark-gray"
-      >
+      <footer className="footer-standard-dark bg-extra-dark-gray">
         <div className="footerBox padding-50px-tb ">
           <div className="container">
             <div className="">
               <div className="textFooter text-center">
-                © 2023 ISBM University, All Right Reserved.
+                © 2024 ISBM University, All Right Reserved.
               </div>
             </div>
           </div>
